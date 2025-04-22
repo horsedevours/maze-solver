@@ -12,6 +12,7 @@ class Cell:
         self._y1 = y1
         self._y2 = y2
         self._w = window
+        self.visited = False
     
     def draw(self):
         upper_left = Point(self._x1, self._y1)
@@ -20,12 +21,20 @@ class Cell:
         lower_right = Point(self._x2, self._y2)
         if self.has_bottom_wall:
             self._w.draw_line(Line(lower_left, lower_right), "blue")
+        else:
+            self._w.draw_line(Line(lower_left, lower_right), "white")
         if self.has_left_wall:
             self._w.draw_line(Line(upper_left, lower_left), "blue")
+        else:
+            self._w.draw_line(Line(upper_left, lower_left), "white")
         if self.has_right_wall:
             self._w.draw_line(Line(upper_right, lower_right), "blue")
+        else:
+            self._w.draw_line(Line(upper_right, lower_right), "white")
         if self.has_top_wall:
             self._w.draw_line(Line(upper_left, upper_right), "blue")
+        else:
+            self._w.draw_line(Line(upper_left, upper_right), "white")
     
     def draw_move(self, to_cell, undo=False):
         color = "red"
