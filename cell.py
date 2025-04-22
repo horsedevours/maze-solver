@@ -40,7 +40,7 @@ class Cell:
         color = "red"
         if undo:
             color = "gray"
-        self._w.draw_line(self.mid_point(), to_cell.mid_point(), color)
+        self._w.draw_line(Line(self.mid_point(), to_cell.mid_point()), color)
     
     def mid_point(self):
         mid_x = (self._x1 + self._x2) / 2
